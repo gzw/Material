@@ -69,7 +69,8 @@ class MainViewController: UIViewController {
 		because any earlier may cause a race condition when instantiating
 		the MainViewController and SideViewController.
 		*/
-		sideNavigationViewController?.setSideViewWidth(view.bounds.width - 88, hidden: true, animated: false)
+		sideNavigationViewController?.setLeftViewWidth(view.bounds.width - 88, hidden: true, animated: false)
+		sideNavigationViewController?.delegate = self
 	}
 	
 	/**
@@ -77,7 +78,15 @@ class MainViewController: UIViewController {
 	SideNavigationViewController.
 	*/
 	func handleMenuButton() {
-		sideNavigationViewController?.open()
+		sideNavigationViewController?.openLeftView()
+	}
+	
+	/**
+	Handles the search button click, which opens the
+	SideNavigationViewController.
+	*/
+	func handleSearchButton() {
+		sideNavigationViewController?.openRightView()
 	}
 	
 	/// Prepares view.
@@ -145,7 +154,7 @@ class MainViewController: UIViewController {
 		navigationBarView.leftButtons = [menuButton]
 		
 		// Search button.
-		let img2: UIImage? = UIImage(named: "ic_search_white")?.imageWithRenderingMode(.AlwaysTemplate)
+		let img2: UIImage? = UIImage(named: "ic_more_vert_white")?.imageWithRenderingMode(.AlwaysTemplate)
 		let searchButton: FlatButton = FlatButton()
 		searchButton.pulseColor = MaterialColor.white
 		searchButton.pulseFill = true
@@ -153,6 +162,7 @@ class MainViewController: UIViewController {
 		searchButton.setImage(img2, forState: .Normal)
 		searchButton.setImage(img2, forState: .Highlighted)
 		searchButton.tintColor = MaterialColor.cyan.darken4
+		searchButton.addTarget(self, action: "handleSearchButton", forControlEvents: .TouchUpInside)
 		
 		// Add searchButton to right side.
 		navigationBarView.rightButtons = [searchButton]
@@ -169,7 +179,7 @@ class MainViewController: UIViewController {
 	func prepareAddButton() {
 		let image: UIImage? = UIImage(named: "ic_add_white")
 		let button: FabButton = FabButton()
-		button.backgroundColor = MaterialColor.deepPurple.accent3
+		button.backgroundColor = MaterialColor.blue.accent3
 		button.setImage(image, forState: .Normal)
 		button.setImage(image, forState: .Highlighted)
 		
@@ -237,5 +247,72 @@ extension MainViewController: UITableViewDelegate {
 	/// Sets the tableView header height.
 	func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 48
+	}
+}
+
+/// SideNavigationViewControllerDelegate methods.
+extension MainViewController: SideNavigationViewControllerDelegate {
+	/**
+	An optional delegation method that is fired before the
+	SideNavigationViewController opens.
+	*/
+	func sideNavigationViewWillOpen(sideNavigationViewController: SideNavigationViewController, position: SideNavigationPosition) {
+		print("Will open", .Left == position ? "Left" : "Right", "view.")
+	}
+	
+	/**
+	An optional delegation method that is fired after the
+	SideNavigationViewController opened.
+	*/
+	func sideNavigationViewDidOpen(sideNavigationViewController: SideNavigationViewController, position: SideNavigationPosition) {
+		print("Did open", .Left == position ? "Left" : "Right", "view.")
+	}
+	
+	/**
+	An optional delegation method that is fired before the
+	SideNavigationViewController closes.
+	*/
+	func sideNavigationViewWillClose(sideNavigationViewController: SideNavigationViewController, position: SideNavigationPosition) {
+		print("Will close", .Left == position ? "Left" : "Right", "view.")
+	}
+	
+	/**
+	An optional delegation method that is fired after the
+	SideNavigationViewController closed.
+	*/
+	func sideNavigationViewDidClose(sideNavigationViewController: SideNavigationViewController, position: SideNavigationPosition) {
+		print("Did close", .Left == position ? "Left" : "Right", "view.")
+	}
+	
+	/**
+	An optional delegation method that is fired when the
+	SideNavigationViewController pan gesture begins.
+	*/
+	func sideNavigationViewPanDidBegin(sideNavigationViewController: SideNavigationViewController, point: CGPoint, position: SideNavigationPosition) {
+		print("Pan did begin for", .Left == position ? "Left" : "Right", "view.")
+	}
+	
+	/**
+	An optional delegation method that is fired when the
+	SideNavigationViewController pan gesture changes position.
+	*/
+	func sideNavigationViewPanDidChange(sideNavigationViewController: SideNavigationViewController, point: CGPoint, position: SideNavigationPosition) {
+		print("Pan did change for", .Left == position ? "Left" : "Right", "view.")
+	}
+	
+	/**
+	An optional delegation method that is fired when the
+	SideNavigationViewController pan gesture ends.
+	*/
+	func sideNavigationViewPanDidEnd(sideNavigationViewController: SideNavigationViewController, point: CGPoint, position: SideNavigationPosition) {
+		print("Pan did end for", .Left == position ? "Left" : "Right", "view.")
+	}
+	
+	/**
+	An optional delegation method that is fired when the
+	SideNavigationViewController tap gesture executes.
+	*/
+	func sideNavigationViewDidTap(sideNavigationViewController: SideNavigationViewController, point: CGPoint, position: SideNavigationPosition) {
+		print("Did Tap for", .Left == position ? "Left" : "Right", "view.")
 	}
 }

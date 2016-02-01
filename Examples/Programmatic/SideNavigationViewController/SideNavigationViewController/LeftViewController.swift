@@ -29,7 +29,7 @@
 */
 
 /*
-The following is an example of setting a UITableView as the SideViewController
+The following is an example of setting a UITableView as the LeftViewController
 within a SideNavigationViewController.
 */
 
@@ -42,7 +42,7 @@ private struct Item {
 	var selected: Bool
 }
 
-class SideViewController: UIViewController {
+class LeftViewController: UIViewController {
 	/// A tableView used to display navigation items.
 	private let tableView: UITableView = UITableView()
 	
@@ -62,13 +62,6 @@ class SideViewController: UIViewController {
 		view.backgroundColor = MaterialColor.clear
 	}
 	
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		sideNavigationViewController?.backdropColor = nil
-		sideNavigationViewController?.depth = .None
-	}
-
-	
 	/// Prepares the items that are displayed within the tableView.
 	private func prepareItems() {
 		items.append(Item(text: "Inbox", imageName: "ic_inbox", selected: true))
@@ -82,7 +75,7 @@ class SideViewController: UIViewController {
 	/// Prepares profile view.
 	private func prepareProfileView() {
 		let backgroundView: MaterialView = MaterialView()
-		backgroundView.image = UIImage(named: "ProfileSideNavBackground")
+		backgroundView.image = UIImage(named: "MaterialBackground")
 		
 		let profileView: MaterialView = MaterialView()
 		profileView.image = UIImage(named: "Profile9")?.resize(toWidth: 72)
@@ -119,16 +112,6 @@ class SideViewController: UIViewController {
 		tableView.delegate = self
 		tableView.separatorStyle = .None
 		
-//		if !UIAccessibilityIsReduceTransparencyEnabled() {
-//			tableView.backgroundColor = MaterialColor.clear
-//			let blurEffect = UIBlurEffect(style: .Light)
-//			let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//			tableView.backgroundView = blurEffectView
-//			
-//			//if you want translucent vibrant table view separator lines
-//			tableView.separatorEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
-//		}
-		
 		// Use MaterialLayout to easily align the tableView.
 		view.addSubview(tableView)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -137,7 +120,7 @@ class SideViewController: UIViewController {
 }
 
 /// TableViewDataSource methods.
-extension SideViewController: UITableViewDataSource {
+extension LeftViewController: UITableViewDataSource {
 	/// Determines the number of rows in the tableView.
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return items.count;
@@ -164,7 +147,7 @@ extension SideViewController: UITableViewDataSource {
 }
 
 /// UITableViewDelegate methods.
-extension SideViewController: UITableViewDelegate {
+extension LeftViewController: UITableViewDelegate {
 	/// Sets the tableView cell height.
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		return 64
