@@ -260,12 +260,11 @@ public class MaterialView : UIView {
 	}
 	
 	/**
-	A property that accesses the layer.borderWith using a MaterialBorder
-	enum preset.
+	A property that accesses the layer.borderWith.
 	*/
-	public var borderWidth: MaterialBorder {
+	public var borderWidth: CGFloat = 0 {
 		didSet {
-			layer.borderWidth = MaterialBorderToValue(borderWidth)
+			layer.borderWidth = borderWidth
 		}
 	}
 	
@@ -305,7 +304,6 @@ public class MaterialView : UIView {
 		contentsCenter = CGRectMake(0, 0, 1, 1)
 		contentsScale = UIScreen.mainScreen().scale
 		contentsGravity = .ResizeAspectFill
-		borderWidth = .None
 		depth = .None
 		shape = .None
 		cornerRadius = .None
@@ -324,7 +322,6 @@ public class MaterialView : UIView {
 		contentsCenter = CGRectMake(0, 0, 1, 1)
 		contentsScale = UIScreen.mainScreen().scale
 		contentsGravity = .ResizeAspectFill
-		borderWidth = .None
 		depth = .None
 		shape = .None
 		cornerRadius = .None
@@ -344,16 +341,6 @@ public class MaterialView : UIView {
 			layoutShape()
 			layoutVisualLayer()
 		}
-	}
-	
-	/**
-	By default CALayer values are animated. The UIView class supresses this
-	behavior for its backing layer. By overrinding the actionForLayer method
-	and returning nil, the backing layer's default animation behavior
-	is enabled.
-	*/
-	public override func actionForLayer(layer: CALayer, forKey event: String) -> CAAction? {
-		return nil
 	}
 	
 	/**
@@ -395,9 +382,7 @@ public class MaterialView : UIView {
 	public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
 		if let a: CAPropertyAnimation = anim as? CAPropertyAnimation {
 			if let b: CABasicAnimation = a as? CABasicAnimation {
-				MaterialAnimation.animationDisabled { [unowned self] in
-					self.layer.setValue(nil == b.toValue ? b.byValue : b.toValue, forKey: b.keyPath!)
-				}
+				layer.setValue(nil == b.toValue ? b.byValue : b.toValue, forKey: b.keyPath!)
 			}
 			(delegate as? MaterialAnimationDelegate)?.materialAnimationDidStop?(anim, finished: flag)
 			layer.removeAnimationForKey(a.keyPath!)

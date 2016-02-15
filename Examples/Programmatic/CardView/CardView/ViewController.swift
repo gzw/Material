@@ -39,9 +39,9 @@ class ViewController: UIViewController {
 		// Examples of using CardView.
 		// Uncomment different examples and read
 		// the comments below.
-//		prepareGeneralCardViewExample()
-		prepareCardViewWithoutPulseBackgroundImageExample()
-//		prepareCardViewWithAlteredAlignmentExample()
+		prepareGeneralCardViewExample()
+//		prepareCardViewWithoutPulseBackgroundImageExample()
+//		prepareCardViewWithPulseBackgroundImageExample()
 //		prepareCardViewButtonBarExample()
 	}
 	
@@ -71,12 +71,11 @@ class ViewController: UIViewController {
 		let detailLabel: UILabel = UILabel()
 		detailLabel.text = "It’s been a while, have you read any new books lately?"
 		detailLabel.numberOfLines = 0
-		cardView.detailLabel = detailLabel
+		cardView.detailView = detailLabel
 		
 		// Yes button.
 		let btn1: FlatButton = FlatButton()
 		btn1.pulseColor = MaterialColor.blue.lighten1
-		btn1.pulseFill = true
 		btn1.pulseScale = false
 		btn1.setTitle("YES", forState: .Normal)
 		btn1.setTitleColor(MaterialColor.blue.darken1, forState: .Normal)
@@ -84,7 +83,6 @@ class ViewController: UIViewController {
 		// No button.
 		let btn2: FlatButton = FlatButton()
 		btn2.pulseColor = MaterialColor.blue.lighten1
-		btn2.pulseFill = true
 		btn2.pulseScale = false
 		btn2.setTitle("NO", forState: .Normal)
 		btn2.setTitleColor(MaterialColor.blue.darken1, forState: .Normal)
@@ -126,13 +124,12 @@ class ViewController: UIViewController {
 		detailLabel.text = "Beautiful Material Design"
 		detailLabel.textColor = MaterialColor.white
 		detailLabel.numberOfLines = 0
-		cardView.detailLabel = detailLabel
+		cardView.detailView = detailLabel
 		
 		// Favorite button.
 		let img1: UIImage? = UIImage(named: "ic_favorite_white")
 		let btn1: FlatButton = FlatButton()
 		btn1.pulseColor = MaterialColor.white
-		btn1.pulseFill = true
 		btn1.pulseScale = false
 		btn1.setImage(img1, forState: .Normal)
 		btn1.setImage(img1, forState: .Highlighted)
@@ -148,42 +145,42 @@ class ViewController: UIViewController {
 	}
 	
 	/**
-	:name:	prepareCardViewWithAlteredAlignmentExample
-	:description:	An example of the CardView with an altered alignment of the UI elements.
+	:name:	prepareCardViewWithPulseBackgroundImageExample
+	:description:	An example of the CardView with the pulse animation and an added background image.
 	*/
-	private func prepareCardViewWithAlteredAlignmentExample() {
+	private func prepareCardViewWithPulseBackgroundImageExample() {
 		let cardView: CardView = CardView()
-		cardView.dividerInset.left = 100
-		cardView.titleLabelInset.left = 100
-		cardView.detailLabelInset.left = 100
-		cardView.pulseColor = MaterialColor.teal.lighten4
+		cardView.backgroundColor = MaterialColor.blue.base
+		cardView.divider = false
 		
 		// Image.
-		cardView.image = UIImage(named: "GraphKit")?.resize(toHeight: 100)
-		cardView.contentsGravity = .TopLeft
+		cardView.image = UIImage(named: "Graph")?.resize(toHeight: 150)
+		cardView.contentsGravity = .Right
 		
 		// Title label.
 		let titleLabel: UILabel = UILabel()
-		titleLabel.text = "GraphKit"
+		titleLabel.text = "Graph"
+		titleLabel.textColor = MaterialColor.white
 		titleLabel.font = RobotoFont.mediumWithSize(24)
 		cardView.titleLabel = titleLabel
 		
 		// Detail label.
 		let detailLabel: UILabel = UILabel()
-		detailLabel.text = "Build scalable data-driven apps."
+		detailLabel.text = "Data-Driven Framework"
+		detailLabel.textColor = MaterialColor.white
 		detailLabel.numberOfLines = 0
-		cardView.detailLabel = detailLabel
+		cardView.detailView = detailLabel
 		
-		// LEARN MORE button.
+		// Favorite button.
+		let img1: UIImage? = UIImage(named: "ic_favorite_white")
 		let btn1: FlatButton = FlatButton()
-		btn1.pulseColor = MaterialColor.teal.lighten1
-		btn1.pulseFill = true
+		btn1.pulseColor = MaterialColor.white
 		btn1.pulseScale = false
-		btn1.setTitle("LEARN MORE", forState: .Normal)
-		btn1.setTitleColor(MaterialColor.teal.darken1, forState: .Normal)
+		btn1.setImage(img1, forState: .Normal)
+		btn1.setImage(img1, forState: .Highlighted)
 		
-		// Add buttons to right side.
-		cardView.rightButtons = [btn1]
+		// Add buttons to left side.
+		cardView.leftButtons = [btn1]
 		
 		// To support orientation changes, use MaterialLayout.
 		view.addSubview(cardView)
@@ -207,7 +204,6 @@ class ViewController: UIViewController {
 		let img1: UIImage? = UIImage(named: "ic_search_white")
 		let btn1: FlatButton = FlatButton()
 		btn1.pulseColor = MaterialColor.white
-		btn1.pulseFill = true
 		btn1.pulseScale = false
 		btn1.setImage(img1, forState: .Normal)
 		btn1.setImage(img1, forState: .Highlighted)
@@ -215,7 +211,6 @@ class ViewController: UIViewController {
 		// BUTTON 1 button.
 		let btn2: FlatButton = FlatButton()
 		btn2.pulseColor = MaterialColor.teal.lighten3
-		btn2.pulseFill = true
 		btn2.pulseScale = false
 		btn2.setTitle("BUTTON 1", forState: .Normal)
 		btn2.setTitleColor(MaterialColor.teal.lighten3, forState: .Normal)
@@ -224,7 +219,6 @@ class ViewController: UIViewController {
 		// BUTTON 2 button.
 		let btn3: FlatButton = FlatButton()
 		btn3.pulseColor = MaterialColor.teal.lighten3
-		btn3.pulseFill = true
 		btn3.pulseScale = false
 		btn3.setTitle("BUTTON 2", forState: .Normal)
 		btn3.setTitleColor(MaterialColor.teal.lighten3, forState: .Normal)

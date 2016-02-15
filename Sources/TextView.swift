@@ -198,12 +198,11 @@ public class TextView: UITextView {
 	}
 	
 	/**
-	A property that accesses the layer.borderWith using a MaterialBorder
-	enum preset.
+	A property that accesses the layer.borderWith.
 	*/
-	public var borderWidth: MaterialBorder {
+	public var borderWidth: CGFloat = 0 {
 		didSet {
-			layer.borderWidth = MaterialBorderToValue(borderWidth)
+			layer.borderWidth = borderWidth
 		}
 	}
 	
@@ -307,7 +306,6 @@ public class TextView: UITextView {
 		depth = .None
 		shape = .None
 		cornerRadius = .None
-		borderWidth = .None
 		super.init(coder: aDecoder)
 		prepareView()
 	}
@@ -323,7 +321,6 @@ public class TextView: UITextView {
 		depth = .None
 		shape = .None
 		cornerRadius = .None
-		borderWidth = .None
 		super.init(frame: frame, textContainer: textContainer)
 		prepareView()
 	}
@@ -397,9 +394,7 @@ public class TextView: UITextView {
 	public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
 		if let a: CAPropertyAnimation = anim as? CAPropertyAnimation {
 			if let b: CABasicAnimation = a as? CABasicAnimation {
-				MaterialAnimation.animationDisabled { [unowned self] in
-					self.layer.setValue(nil == b.toValue ? b.byValue : b.toValue, forKey: b.keyPath!)
-				}
+				layer.setValue(nil == b.toValue ? b.byValue : b.toValue, forKey: b.keyPath!)
 			}
 			(delegate as? MaterialAnimationDelegate)?.materialAnimationDidStop?(anim, finished: flag)
 			layer.removeAnimationForKey(a.keyPath!)

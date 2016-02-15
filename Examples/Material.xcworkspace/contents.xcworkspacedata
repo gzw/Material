@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/danieldahan/Dropbox/CosmicMind/Technology/Repositories/Material/Material.xcodeproj">
+      location = "group:../Material.xcodeproj">
    </FileRef>
    <Group
       location = "container:"
@@ -12,6 +12,13 @@
          name = "MaterialLayout">
          <FileRef
             location = "group:Programmatic/MaterialLayout/MaterialLayout.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Grid">
+         <FileRef
+            location = "group:Programmatic/Grid/Grid.xcodeproj">
          </FileRef>
       </Group>
       <Group
@@ -58,6 +65,16 @@
       </Group>
       <Group
          location = "container:"
+         name = "Menu">
+         <FileRef
+            location = "group:Programmatic/Menu/Menu.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Programmatic/MenuView/MenuView.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
          name = "NavigationBarView">
          <FileRef
             location = "group:Programmatic/NavigationBarView/NavigationBarView.xcodeproj">
@@ -75,6 +92,9 @@
          name = "CardView">
          <FileRef
             location = "group:Programmatic/CardView/CardView.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Programmatic/TableCardView/TableCardView.xcodeproj">
          </FileRef>
       </Group>
       <Group

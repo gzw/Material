@@ -2,18 +2,20 @@
 
 # Welcome to Material
 
-Material is a graphics and animation framework for Google's Material Design. It is designed to allow the creativity of others to easily be expressed.
+Express your creativity with Material, an animation and graphics framework for Google's Material Design and Apple's Flat UI in Swift.
 
 ## Features
 
 - [x] Fully Configurable UI Components
+- [x] Grid System For Complex UIs
+- [x] Layout Library To Simplify AutoLayout
 - [x] Base Material Layers & Material Views To Create New UI Components
 - [x] Side Navigation View Controller
 - [x] Navigation Bar View
 - [x] Material Buttons
 - [x] Material Card Views
+- [x] Menu Toolset To Create Animated Menus
 - [x] Camera / Video Extension With Extensive Functionality
-- [x] Layout Library To Simplify AutoLayout
 - [x] Animation Extension To Create Intricate Animations
 - [x] Complete Material Color Library
 - [x] Example Projects
@@ -33,7 +35,7 @@ Material is a graphics and animation framework for Google's Material Design. It 
 
 ## Installation
 
-> **Embedded frameworks require a minimum deployment target of iOS 8 or OS X Mavericks (10.9).**
+> **Embedded frameworks require a minimum deployment target of iOS 8.**
 > - [Download Material](https://github.com/CosmicMind/Material/archive/master.zip)
 
 Visit the [Installation](https://github.com/CosmicMind/Material/wiki/Installation) page to learn how to install Material using [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage).
@@ -49,17 +51,19 @@ Material is a growing project and will encounter changes throughout its developm
 ## A Tour  
 
 * [MaterialColor](#materialcolor)
-* [SideNavigationViewController](#sidenavigationviewcontroller)
-* [NavigationBarView](#navigationbarview)
-* [TextField](#textfield)
-* [TextView](#textview)
 * [MaterialLayer](#materiallayer)
 * [MaterialView](#materialview)
 * [MaterialPulseView](#materialpulseview)
+* [TextField](#textfield)
+* [TextView](#textview)
 * [FlatButton](#flatbutton)
 * [RaisedButton](#raisedbutton)
 * [FabButton](#fabbutton)
-* [CardView](#cardview)
+* [Menu](#menu) (New)
+* [Grid](#grid) (New)
+* [NavigationBarView](#navigationbarview)
+* [SideNavigationViewController](#sidenavigationviewcontroller)
+* [CardView](#cardview) (New)
 * [ImageCardView](#imagecardview)
 * [CaptureView](#captureview)
 
@@ -75,6 +79,7 @@ Material is a growing project and will encounter changes throughout its developm
 * ProgressBar (circular and horizontal)
 * DatePicker
 * TimePicker
+* Switch Control
 * More Examples
 
 <a name="materialcolor"></a>
@@ -85,45 +90,6 @@ MaterialColor is a complete Material Design color library. It uses base color va
 ![MaterialMaterialColorPalette](http://www.cosmicmind.io/MK/MaterialMaterialColorPalette.png)
 
 [Learn More About MaterialColor](https://github.com/CosmicMind/Material/wiki/MaterialColor)
-
-<a name="sidenavigationviewcontroller"></a>
-## SideNavigationViewController
-
-The SideNavigationViewController is an app wide navigation pattern. It generally provides overall app navigation with other useful items. Use the Left position for global app navigation, and the Right position for view navigation.
-
-![MaterialSideNavigationViewController](http://www.cosmicmind.io/MK/MaterialSideNavigationViewController.gif)
-
-[Learn More About SideNavigationViewController](https://github.com/CosmicMind/Material/wiki/SideNavigationViewController)
-
-<a name="navigationbarview"></a>
-## NavigationBarView
-
-A NavigationBarView is a fully featured navigation bar that supports orientation changes, background images, title and detail labels, both left and right button sets, and status bar settings.
-
-![MaterialNavigationBarView](http://www.cosmicmind.io/MK/MaterialNavigationBarView.gif)
-
-[Learn More About NavigationBarView](https://github.com/CosmicMind/Material/wiki/NavigationBarView)
-
-<a name="textfield"></a>
-## TextField
-
-A TextField is an excellent way to improve UX. TextFields offer details
-that describe the usage and input results of text. For example, when a
-user enters an incorrect email, it is possible to display an error message
-under the TextField.
-
-![MaterialTextField](http://www.cosmicmind.io/MK/MaterialTextField.gif)
-
-[Learn More About TextField](https://github.com/CosmicMind/Material/wiki/TextField)
-
-<a name="textview"></a>
-## TextView
-
-A TextView is an excellent way to improve UX. TextViews offer details that describe the usage of text. In addition, TextViews may easily match any regular expression pattern in a body of text. Below is an example of the default hashtag pattern matching.
-
-![MaterialTextView](http://www.cosmicmind.io/MK/MaterialTextView.gif)
-
-[Learn More About TextView](https://github.com/CosmicMind/Material/wiki/TextView)
 
 <a name="materiallayer"></a>
 ## MaterialLayer
@@ -152,6 +118,27 @@ MaterialPulseView is at the heart of all pulse animations. Any view that subclas
 
 [Learn More About MaterialPulseView](https://github.com/CosmicMind/Material/wiki/MaterialPulseView)
 
+<a name="textfield"></a>
+## TextField
+
+A TextField is an excellent way to improve UX. TextFields offer details
+that describe the usage and input results of text. For example, when a
+user enters an incorrect email, it is possible to display an error message
+under the TextField.
+
+![MaterialTextField](http://www.cosmicmind.io/MK/MaterialTextField.gif)
+
+[Learn More About TextField](https://github.com/CosmicMind/Material/wiki/TextField)
+
+<a name="textview"></a>
+## TextView
+
+A TextView is an excellent way to improve UX. TextViews offer details that describe the usage of text. In addition, TextViews may easily match any regular expression pattern in a body of text. Below is an example of the default hashtag pattern matching.
+
+![MaterialTextView](http://www.cosmicmind.io/MK/MaterialTextView.gif)
+
+[Learn More About TextView](https://github.com/CosmicMind/Material/wiki/TextView)
+
 <a name="flatbutton"></a>
 ## FlatButton
 
@@ -177,7 +164,61 @@ A FabButton is essential to Material Design's overall look. Below showcases its 
 
 ![MaterialFabButton](http://www.cosmicmind.io/MK/MaterialFabButton.gif)
 
-[Learn More About FabButton](https://github.com/CosmicMind/Material/wiki/FabButton)
+<a name="menu"></a>
+## Menu
+
+A Menu manages a group of UIViews that may be animated open in the Up, Down, Left, and Right directions. The animations are fully customizable. The Examples/Programmatic directory has sample projects using Menus.
+
+Below is an example using FabButtons.
+
+![MaterialFabMenu](http://www.cosmicmind.io/MK/MaterialFabMenu.gif)
+
+Below is an example using FlatButtons.
+
+![MaterialFlatMenu](http://www.cosmicmind.io/MK/MaterialFlatMenu.gif)
+
+Below is an example using FlatButtons with images.
+
+![MaterialFlashMenu](http://www.cosmicmind.io/MK/MaterialFlashMenu.gif)
+
+[Learn More About Menu](https://github.com/CosmicMind/Material/wiki/Menu)
+
+<a name="grid"></a>
+## Grid
+
+Grid is an extension of UIView that enables any collection of subviews to be managed in a flexible grid system, independent of other views that would need to be freely moving. Below are examples of using Grid. In the Examples/Programmatic directory, there are examples using this wonderful feature.
+
+Below is an example of a small CardView using Grid.
+
+![MaterialSmallCardView](http://www.cosmicmind.io/MK/MaterialGridSmallCardView.gif)
+
+Below is an example of a medium CardView using Grid.
+
+![MaterialGridMediumCardView](http://www.cosmicmind.io/MK/MaterialGridMediumCardView.gif)
+
+Below is an example of a large CardView using Grid.
+
+![MaterialGridLargeCardView](http://www.cosmicmind.io/MK/MaterialGridLargeCardView.gif)
+
+[Learn More About Grid](https://github.com/CosmicMind/Material/wiki/Grid)
+
+<a name="navigationbarview"></a>
+## NavigationBarView
+
+A NavigationBarView is a fully featured navigation bar that supports orientation changes, background images, title and detail labels, both left and right button sets, and status bar settings.
+
+![MaterialNavigationBarView](http://www.cosmicmind.io/MK/MaterialNavigationBarView.gif)
+
+[Learn More About NavigationBarView](https://github.com/CosmicMind/Material/wiki/NavigationBarView)
+
+<a name="sidenavigationviewcontroller"></a>
+## SideNavigationViewController
+
+The SideNavigationViewController is an app wide navigation pattern. It generally provides overall app navigation with other useful items. Use the Left position for global app navigation, and the Right position for view navigation.
+
+![MaterialSideNavigationViewController](http://www.cosmicmind.io/MK/MaterialSideNavigationViewController.gif)
+
+[Learn More About SideNavigationViewController](https://github.com/CosmicMind/Material/wiki/SideNavigationViewController)
 
 <a name="cardview"></a>
 ## CardView
@@ -186,19 +227,19 @@ Right out of the box to a fully customizable configuration, CardView always stan
 
 ![MaterialCardView](http://www.cosmicmind.io/MK/MaterialCardView.gif)
 
-[Learn More About CardView](https://github.com/CosmicMind/Material/wiki/CardView)
-
 Easily remove the pulse animation and add a background image for an entirely new feel.
 
 ![MaterialCardViewFavorite](http://www.cosmicmind.io/MK/MaterialCardViewFavorite.gif)
 
-Adjust the alignment of the UI elements to create different configurations of the CardView.
+Add any view as the detail to a CardView. For example, a UITableView.
 
-![MaterialCardViewDataDriven](http://www.cosmicmind.io/MK/MaterialCardViewDataDriven.gif)
+![MaterialTableCardView](http://www.cosmicmind.io/MK/MaterialTableCardView.gif)
 
 CardViews are so flexible they create entirely new components by removing all but certain elements. For example, bellow is a button bar by only setting the button values of the CardView.
 
 ![MaterialCardViewButtonBar](http://www.cosmicmind.io/MK/MaterialCardViewButtonBar.gif)
+
+[Learn More About CardView](https://github.com/CosmicMind/Material/wiki/CardView)
 
 <a name="imagecardview"></a>
 ## ImageCardView
@@ -207,11 +248,11 @@ Bold and attractive, ImageCardView is the next step from a CardView. Below are s
 
 ![MaterialImageCardView](http://www.cosmicmind.io/MK/MaterialImageCardView.gif)
 
-[Learn More About ImageCardView](https://github.com/CosmicMind/Material/wiki/ImageCardView)
-
 Remove elements, such as details to create a fresh look for your images.
 
 ![MaterialImageCardViewBackgroundImage](http://www.cosmicmind.io/MK/MaterialImageCardViewBackgroundImage.gif)
+
+[Learn More About ImageCardView](https://github.com/CosmicMind/Material/wiki/ImageCardView)
 
 <a name="captureview"></a>
 ## CaptureView

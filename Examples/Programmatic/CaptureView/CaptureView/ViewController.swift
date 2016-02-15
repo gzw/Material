@@ -112,9 +112,7 @@ class ViewController: UIViewController, CaptureViewDelegate, CaptureSessionDeleg
 	:name:	captureViewDidUpdateRecordTimer
 	*/
 	func captureViewDidUpdateRecordTimer(captureView: CaptureView, hours: Int, minutes: Int, seconds: Int) {
-		MaterialAnimation.animationDisabled {
-			self.navigationBarView.titleLabel!.text = String(format: "%02i:%02i:%02i", arguments: [hours, minutes, seconds])
-		}
+		navigationBarView.titleLabel!.text = String(format: "%02i:%02i:%02i", arguments: [hours, minutes, seconds])
 	}
 	
 	/**
@@ -278,9 +276,8 @@ class ViewController: UIViewController, CaptureViewDelegate, CaptureSessionDeleg
 		captureButton.width = 72
 		captureButton.height = 72
 		captureButton.pulseColor = MaterialColor.white
-		captureButton.pulseFill = true
 		captureButton.backgroundColor = MaterialColor.red.darken1.colorWithAlphaComponent(0.3)
-		captureButton.borderWidth = .Border2
+		captureButton.borderWidth =  2
 		captureButton.borderColor = MaterialColor.white
 		captureButton.depth = .None
 		

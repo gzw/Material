@@ -52,11 +52,12 @@ class ViewController: UIViewController {
 	
 	/// Prepare the MaterialView.
 	private func prepareGeneralMaterialViewExample() {
-		let materialView: MaterialView = MaterialView(frame: CGRectMake(132, 132, 150, 150))
-		materialView.image = UIImage(named: "FocusAppIcon")
-		materialView.shape = .Square
+		let point: CGFloat = (UIScreen.mainScreen().bounds.width - 125) / 2
+		
+		let materialView: MaterialView = MaterialView(frame: CGRectMake(point, point, 125, 125))
+		materialView.image = UIImage(named: "CosmicMind")
+		materialView.shape = .Circle
 		materialView.depth = .Depth2
-		materialView.cornerRadius = .Radius3
 		
 		// Add materialView to UIViewController.
 		view.addSubview(materialView)

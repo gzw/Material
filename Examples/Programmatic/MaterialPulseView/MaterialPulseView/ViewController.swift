@@ -51,14 +51,21 @@ class ViewController: UIViewController {
 	
 	/// Prepares the MaterialPulseView example.
 	private func prepareGeneralMaterialPulseViewExample() {
-		let pulseView: MaterialPulseView = MaterialPulseView(frame: CGRectMake(132, 132, 150, 150))
-		pulseView.image = UIImage(named: "GraphKitAppIcon")
+		let point: CGFloat = (UIScreen.mainScreen().bounds.width - 150) / 2
+		
+		let pulseView: MaterialPulseView = MaterialPulseView(frame: CGRectMake(point, point, 150, 150))
+		pulseView.image = UIImage(named: "Graph")
 		pulseView.shape = .Square
-		pulseView.depth = .Depth2
-		pulseView.cornerRadius = .Radius4
+		pulseView.depth = .Depth1
+		pulseView.cornerRadius = .Radius3
 		
 		// Add pulseView to UIViewController.
 		view.addSubview(pulseView)
+		
+		// Trigger the pulse animation.
+		MaterialAnimation.delay(2) {
+			pulseView.pulse()
+		}
 	}
 }
 

@@ -81,7 +81,7 @@ class LeftViewController: UIViewController {
 		profileView.image = UIImage(named: "Profile9")?.resize(toWidth: 72)
 		profileView.shape = .Circle
 		profileView.borderColor = MaterialColor.white
-		profileView.borderWidth = .Border3
+		profileView.borderWidth = 3
 		
 		let nameLabel: UILabel = UILabel()
 		nameLabel.text = "Michael Smith"
@@ -151,5 +151,10 @@ extension LeftViewController: UITableViewDelegate {
 	/// Sets the tableView cell height.
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		return 64
+	}
+	
+	/// Select item at row in tableView.
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		print("Item selected")
 	}
 }

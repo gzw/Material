@@ -59,16 +59,26 @@ class ViewController: UIViewController {
 	:description:	General usage example.
 	*/
 	private func prepareGeneralMaterialLayerExample() {
-		let materialLayer: MaterialLayer = MaterialLayer(frame: CGRectMake(132, 132, 150, 150))
-		materialLayer.image = UIImage(named: "CosmicMindAppIcon")
+		let diameter: CGFloat = 150
+		let point: CGFloat = UIScreen.mainScreen().bounds.width / 2 - diameter / 2
+		let materialLayer: MaterialLayer = MaterialLayer(frame: CGRectMake(point, point, diameter, diameter))
 		materialLayer.shape = .Circle
-		materialLayer.depth = .Depth2
+		
+		UIImage.contentsOfURL(NSURL(string: "http://www.cosmicmind.io/CM/iTunesArtwork.png")!) { (image: UIImage?, error: NSError?) in
+			if let v: UIImage = image {
+				materialLayer.image = v
+			} else {
+				materialLayer.image = UIImage(named: "iTunesArtWork")
+			}
+		}
 		
 		// Add materialLayer to UIViewController.
 		view.layer.addSublayer(materialLayer)
 		
 		// Add a rotate animation.
-		materialLayer.animate(MaterialAnimation.rotate(3, duration: 3))
+		MaterialAnimation.delay(3) {
+			materialLayer.animate(MaterialAnimation.rotate(3, duration: 3))
+		}
 	}
 }
 

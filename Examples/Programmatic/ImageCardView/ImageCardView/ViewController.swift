@@ -31,19 +31,6 @@
 import UIKit
 import Material
 
-// helper method
-public extension UIImage {
-	class func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
-		let rect = CGRectMake(0, 0, size.width, size.height)
-		UIGraphicsBeginImageContextWithOptions(size, false, 0)
-		color.setFill()
-		UIRectFill(rect)
-		let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-		UIGraphicsEndImageContext()
-		return image
-	}
-}
-
 class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -52,8 +39,8 @@ class ViewController: UIViewController {
 		// Examples of using ImageCardView.
 		// Uncomment different examples and read
 		// the comments below.
-//		prepareGeneralImageCardViewExample()
-		prepareImageCardViewWithoutDetailLabelAndDividerExample()
+		prepareGeneralImageCardViewExample()
+//		prepareImageCardViewWithoutDetailLabelAndDividerExample()
 	}
 	
 	/**
@@ -87,12 +74,11 @@ class ViewController: UIViewController {
 		let detailLabel: UILabel = UILabel()
 		detailLabel.text = "It’s been a while, have you read any new books lately?"
 		detailLabel.numberOfLines = 0
-		imageCardView.detailLabel = detailLabel
+		imageCardView.detailView = detailLabel
 		
 		// Yes button.
 		let btn1: FlatButton = FlatButton()
 		btn1.pulseColor = MaterialColor.cyan.lighten1
-		btn1.pulseFill = true
 		btn1.pulseScale = false
 		btn1.setTitle("YES", forState: .Normal)
 		btn1.setTitleColor(MaterialColor.cyan.darken1, forState: .Normal)
@@ -100,7 +86,6 @@ class ViewController: UIViewController {
 		// No button.
 		let btn2: FlatButton = FlatButton()
 		btn2.pulseColor = MaterialColor.cyan.lighten1
-		btn2.pulseFill = true
 		btn2.pulseScale = false
 		btn2.setTitle("NO", forState: .Normal)
 		btn2.setTitleColor(MaterialColor.cyan.darken1, forState: .Normal)
@@ -133,12 +118,11 @@ class ViewController: UIViewController {
 		titleLabel.font = RobotoFont.regularWithSize(24)
 		imageCardView.titleLabel = titleLabel
 		imageCardView.titleLabelInset.top = 80
-
+		
 		// Star button.
 		let img1: UIImage? = UIImage(named: "ic_star_grey_darken_2")
 		let btn1: FlatButton = FlatButton()
 		btn1.pulseColor = MaterialColor.blueGrey.lighten1
-		btn1.pulseFill = true
 		btn1.pulseScale = false
 		btn1.setImage(img1, forState: .Normal)
 		btn1.setImage(img1, forState: .Highlighted)
@@ -147,7 +131,6 @@ class ViewController: UIViewController {
 		let img2: UIImage? = UIImage(named: "ic_favorite_grey_darken_2")
 		let btn2: FlatButton = FlatButton()
 		btn2.pulseColor = MaterialColor.blueGrey.lighten1
-		btn2.pulseFill = true
 		btn2.pulseScale = false
 		btn2.setImage(img2, forState: .Normal)
 		btn2.setImage(img2, forState: .Highlighted)
@@ -156,7 +139,6 @@ class ViewController: UIViewController {
 		let img3: UIImage? = UIImage(named: "ic_share_grey_darken_2")
 		let btn3: FlatButton = FlatButton()
 		btn3.pulseColor = MaterialColor.blueGrey.lighten1
-		btn3.pulseFill = true
 		btn3.pulseScale = false
 		btn3.setImage(img3, forState: .Normal)
 		btn3.setImage(img3, forState: .Highlighted)
